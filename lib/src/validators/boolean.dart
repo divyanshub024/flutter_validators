@@ -1,9 +1,9 @@
-///
+/// Check if String is a boolean.
 
 bool isBoolean(String str) => _isBoolean(str);
 
 extension BooleanX on String {
-  bool isBoolean() {
+  bool get isBoolean {
     return _isBoolean(this);
   }
 }

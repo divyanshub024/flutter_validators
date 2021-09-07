@@ -1,3 +1,7 @@
+/// Compares both the string
+///
+/// return True if strings equal.
+
 bool equals(String str, String comparison) => _equals(str, comparison);
 
 extension EqualX on String {
