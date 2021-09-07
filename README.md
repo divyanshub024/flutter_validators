@@ -1,14 +1,17 @@
-# flutter_validator
+# Flutter Validator
 
-A new Flutter project.
+A dart package of [String](https://api.dart.dev/stable/2.14.0/dart-core/String-class.html) validators and sanitizers.
+Inspired by [validator.js](https://github.com/validatorjs/validator.js)
 
-## Getting Started
+## Installation and Usage
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+## Validators
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+Here is a list of the validators currently available.
+
+| Validator     | Description |
+| -----------   | ----------- |
+| isBase32      | Title       |
+| isBase58      | Text        |
+| isBoolean     | Text        |
+| equals        | Text        |
