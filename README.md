@@ -1,5 +1,5 @@
 # Flutter Validators
-<p align="center">
+<p align="left">
 <a href="https://img.shields.io/badge/License-MIT-green"><img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License"></a>
 <a href="https://github.com/divyanshub024/flutter_validators/stargazers"><img src="https://img.shields.io/github/stars/divyanshub024/flutter_validators?style=flat&logo=github&colorB=green&label=stars" alt="stars"></a>
 <a href="https://pub.dev/packages/flutter_validators/versions/0.0.1"><img src="https://img.shields.io/badge/pub-2.2.0-orange" alt="pub version"></a>
