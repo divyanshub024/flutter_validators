@@ -1,8 +1,8 @@
 # Flutter Validators
 <p align="left">
-<a href="https://img.shields.io/badge/License-MIT-green"><img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License"></a>
-<a href="https://github.com/divyanshub024/flutter_validators/stargazers"><img src="https://img.shields.io/github/stars/divyanshub024/flutter_validators?style=flat&logo=github&colorB=green&label=stars" alt="stars"></a>
-<a href="https://pub.dev/packages/flutter_validators"><img src="https://img.shields.io/badge/pub-0.0.2-orange" alt="pub version"></a>
+  <a href="https://img.shields.io/badge/License-MIT-green"><img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License"></a>
+  <a href="https://github.com/divyanshub024/flutter_validators/stargazers"><img src="https://img.shields.io/github/stars/divyanshub024/flutter_validators?style=flat&logo=github&colorB=green&label=stars" alt="stars"></a>
+  <a href="https://pub.dev/packages/flutter_validators"><img src="https://img.shields.io/pub/v/flutter_validators.svg" alt="Pub"></a>
 </p>
 
 A dart package of [String](https://api.dart.dev/stable/2.14.0/dart-core/String-class.html) validators and sanitizers.
