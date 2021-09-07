@@ -11,7 +11,8 @@ Here is a list of the validators currently available.
 
 | Validator     | Description |
 | -----------   | ----------- |
-| isBase32      | Title       |
-| isBase58      | Text        |
-| isBoolean     | Text        |
-| equals        | Text        |
+| isBase32      | Check if a string is base32 encoded.       |
+| isBase58      | Check if a string is base58 encoded.        |
+| isBoolean     | Check if String is a boolean.        |
+| isEmail        | Check if string is a valid email.        |
+| equals        | Check if both Strings are equal.        |

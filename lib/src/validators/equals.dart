@@ -1,6 +1,4 @@
-/// Compares both the string
-///
-/// return True if strings equal.
+/// Check if both Strings are equal.
 
 bool equals(String str, String comparison) => _equals(str, comparison);
 
