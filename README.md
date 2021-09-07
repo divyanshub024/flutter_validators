@@ -1,4 +1,4 @@
-# Flutter Validator
+# Flutter Validators
 
 A dart package of [String](https://api.dart.dev/stable/2.14.0/dart-core/String-class.html) validators and sanitizers.
 Inspired by [validator.js](https://github.com/validatorjs/validator.js)
