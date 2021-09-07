@@ -5,6 +5,27 @@ Inspired by [validator.js](https://github.com/validatorjs/validator.js)
 
 ## Installation and Usage
 
+Run this command:
+With Dart:
+
+```
+dart pub add flutter_validators
+```
+
+This will add a line like this to your package's pubspec.yaml (and run an implicit `dart pub get`):
+
+```
+dependencies:
+  flutter_validators: ^0.0.1
+```
+
+### Import it
+
+Now in your Dart code, you can use:
+```
+import 'package:flutter_validators/flutter_validators.dart';
+```
+
 ## Validators
 
 Here is a list of the validators currently available.
