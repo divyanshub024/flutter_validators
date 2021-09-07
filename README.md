@@ -21,7 +21,7 @@ This will add a line like this to your package's pubspec.yaml (and run an implic
 
 ```
 dependencies:
-  flutter_validators: ^0.0.1
+  flutter_validators: ^0.0.2
 ```
 
 ## Usage

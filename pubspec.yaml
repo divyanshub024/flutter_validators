@@ -1,6 +1,6 @@
 name: flutter_validators
-description: A dart package of String validators and sanitizers.
-version: 0.0.1
+description: A pure dart package of String validators and sanitizers. Inspired by validator.js.
+version: 0.0.2
 homepage: https://github.com/divyanshub024/flutter_validator
 
 environment:
