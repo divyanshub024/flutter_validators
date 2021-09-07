@@ -1,9 +1,14 @@
 # Flutter Validators
+<p align="center">
+<a href="https://img.shields.io/badge/License-MIT-green"><img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License"></a>
+<a href="https://github.com/divyanshub024/flutter_validators/stargazers"><img src="https://img.shields.io/github/stars/divyanshub024/flutter_validators?style=flat&logo=github&colorB=green&label=stars" alt="stars"></a>
+<a href="https://pub.dev/packages/flutter_validators/versions/0.0.1"><img src="https://img.shields.io/badge/pub-2.2.0-orange" alt="pub version"></a>
+</p>
 
 A dart package of [String](https://api.dart.dev/stable/2.14.0/dart-core/String-class.html) validators and sanitizers.
 Inspired by [validator.js](https://github.com/validatorjs/validator.js)
 
-## Installation and Usage
+## Installation
 
 Run this command:
 With Dart:
@@ -19,11 +24,25 @@ dependencies:
   flutter_validators: ^0.0.1
 ```
 
-### Import it
+## Usage
 
-Now in your Dart code, you can use:
+Import the package in your Dart file:
 ```
 import 'package:flutter_validators/flutter_validators.dart';
+```
+
+Now, you can call the respective validator method.
+
+```
+  var email = 'foo@bar.com';
+
+  print(isEmail(email)); // true
+```
+
+To have more streamlined code use built-in String extension methods
+
+```
+print('foo@bar.com'.isEmail);
 ```
 
 ## Validators

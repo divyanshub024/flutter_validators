@@ -6,3 +6,6 @@ homepage: https://github.com/divyanshub024/flutter_validator
 environment:
   sdk: ">=2.12.0 <3.0.0"
   flutter: ">=1.17.0"
+
+dev_dependencies:
+  test: ^1.16.0
