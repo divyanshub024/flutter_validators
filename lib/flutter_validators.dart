@@ -1,5 +1,6 @@
 library flutter_validators;
 
+export 'src/validators/ascii.dart';
 export 'src/validators/base32.dart';
 export 'src/validators/base58.dart';
 export 'src/validators/boolean.dart';
