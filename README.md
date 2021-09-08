@@ -51,6 +51,7 @@ Here is a list of the validators currently available.
 
 | Validator     | Description |
 | -----------   | ----------- |
+| ascii      | Check if a string contaibs ASCII chars only.       |
 | isBase32      | Check if a string is base32 encoded.       |
 | isBase58      | Check if a string is base58 encoded.        |
 | isBoolean     | Check if String is a boolean.        |
