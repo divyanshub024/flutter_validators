@@ -9,5 +9,5 @@ extension BooleanX on String {
 }
 
 bool _isBoolean(String str) {
-  return ['True', 'False'].contains(str);
+  return ['true', 'false', '1', '0'].contains(str);
 }
