@@ -8,3 +8,4 @@ export 'validators/email.dart';
 export 'validators/equals.dart';
 export 'validators/int.dart';
 export 'validators/json.dart';
+export 'validators/phone.dart';
