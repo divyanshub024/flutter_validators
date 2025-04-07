@@ -1,4 +1,4 @@
-import 'package:flutter_validators_dart/validators/json.dart';
+import 'package:flutter_validators/validators/json.dart';
 import 'package:test/test.dart';
 
 void main() {

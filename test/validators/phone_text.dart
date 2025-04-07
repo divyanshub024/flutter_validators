@@ -1,4 +1,4 @@
-import 'package:flutter_validators_dart/validators/phone.dart';
+import 'package:flutter_validators/flutter_validators.dart';
 import 'package:test/test.dart';
 
 void main() {
