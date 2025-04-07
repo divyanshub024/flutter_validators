@@ -1,9 +1,10 @@
 library flutter_validators;
 
-export 'src/validators/ascii.dart';
-export 'src/validators/base32.dart';
-export 'src/validators/base58.dart';
-export 'src/validators/boolean.dart';
-export 'src/validators/email.dart';
-export 'src/validators/equals.dart';
-export 'src/validators/int.dart';
+export 'validators/ascii.dart';
+export 'validators/base32.dart';
+export 'validators/base58.dart';
+export 'validators/boolean.dart';
+export 'validators/email.dart';
+export 'validators/equals.dart';
+export 'validators/int.dart';
+export 'validators/json.dart';
