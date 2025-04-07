@@ -21,7 +21,7 @@ This will add a line like this to your package's pubspec.yaml (and run an implic
 
 ```
 dependencies:
-  flutter_validators: ^0.0.2
+  flutter_validators: ^1.0.0
 ```
 
 ## Usage
@@ -57,6 +57,9 @@ Here is a list of the validators currently available.
 | isBoolean     | Check if String is a boolean.        |
 | isEmail        | Check if string is a valid email.        |
 | equals        | Check if both Strings are equal.        |
+| isInt        | Check if string is a valid integer.        |
+| isJson        | Check if string is a valid JSON.        |
+| isPhone        | Check if string is a valid phone number.        |
 
 ## License (MIT)
 
