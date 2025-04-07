@@ -1,6 +1,7 @@
-## 0.1.0
+## 1.0.0
 
-* Added `isInt` validator
+* Added `isPhone` validator
+* Added `isJson` validator
 
 ## 0.0.4
 
