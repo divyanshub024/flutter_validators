@@ -1,4 +1,4 @@
-library flutter_validators;
+library;
 
 export 'validators/ascii.dart';
 export 'validators/base32.dart';

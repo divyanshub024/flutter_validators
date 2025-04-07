@@ -1,5 +1,4 @@
 ///	Check if a string is base58 encoded.
-
 bool isBase58(String str) => _isBase58(str);
 
 extension Base58X on String {

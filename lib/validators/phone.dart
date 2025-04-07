@@ -3,7 +3,7 @@
 /// - International format with country code: +1234567890, +1 234 567 890
 /// - Local formats: (123) 456-7890, 123-456-7890, 123.456.7890
 /// - Simple digit sequence: 1234567890
-
+///
 /// Check if string is a valid phone number
 bool isPhone(String str) => _isPhone(str);
 

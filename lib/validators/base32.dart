@@ -1,5 +1,4 @@
-///	Check if a string is base32 encoded.
-
+/// Check if a string is base32 encoded.
 bool isBase32(String str) => _isBase32(str);
 
 extension Base32X on String {

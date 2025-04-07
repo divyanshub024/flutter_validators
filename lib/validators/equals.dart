@@ -1,5 +1,4 @@
 /// Check if both Strings are equal.
-
 bool equals(String str, String comparison) => _equals(str, comparison);
 
 extension EqualX on String {

@@ -1,5 +1,4 @@
 /// Check if String is a boolean.
-
 bool isBoolean(String str) => _isBoolean(str);
 
 extension BooleanX on String {
