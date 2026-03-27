@@ -1,89 +1,167 @@
-# Flutter Validators
-<p align="left">
-  <a href="https://img.shields.io/badge/License-MIT-green"><img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License"></a>
-  <a href="https://github.com/divyanshub024/flutter_validators/stargazers"><img src="https://img.shields.io/github/stars/divyanshub024/flutter_validators?style=flat&logo=github&colorB=green&label=stars" alt="stars"></a>
-  <a href="https://pub.dev/packages/flutter_validators"><img src="https://img.shields.io/pub/v/flutter_validators.svg" alt="Pub"></a>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/divyanshub024/flutter_validators/main/assets/banner.png" alt="Flutter Validators Banner" />
 </p>
 
-A dart package of [String](https://api.dart.dev/stable/2.14.0/dart-core/String-class.html) validators and sanitizers.
-Inspired by [validator.js](https://github.com/validatorjs/validator.js)
+<p align="center">
+  <h1 align="center">Flutter Validators</h1>
+</p>
 
-## Installation
+<p align="center">
+  <strong>The most comprehensive string validation package for Dart & Flutter.</strong>
+</p>
 
-Run this command:
-With Dart:
+<p align="center">
+  <a href="https://pub.dev/packages/flutter_validators"><img src="https://img.shields.io/pub/v/flutter_validators.svg?logo=dart&color=blue" alt="Pub Version"></a>
+  <a href="https://github.com/divyanshub024/flutter_validators/actions"><img src="https://github.com/divyanshub024/flutter_validators/actions/workflows/test.yml/badge.svg" alt="CI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License"></a>
+  <a href="https://github.com/divyanshub024/flutter_validators/stargazers"><img src="https://img.shields.io/github/stars/divyanshub024/flutter_validators?style=flat&logo=github&colorB=green&label=stars" alt="Stars"></a>
+</p>
 
-```
-dart pub add flutter_validators
-```
+<p align="center">
+  Inspired by <a href="https://github.com/validatorjs/validator.js">validator.js</a> · 20+ validators · Works with Flutter Forms out of the box
+</p>
 
-This will add a line like this to your package's pubspec.yaml (and run an implicit `dart pub get`):
+---
 
-```
+A pure Dart package with 20+ string validators and sanitizers, from emails and URLs to credit cards and UUIDs. Use them as simple functions, convenient `String` extensions, or plug them directly into Flutter's `TextFormField` with the built-in `Validator` class. Zero dependencies, fully tested.
+
+---
+
+## 📦 Installation
+
+```yaml
 dependencies:
-  flutter_validators: ^1.0.0
+  flutter_validators: ^1.1.0
 ```
 
-## Usage
+Then run:
 
-Import the package in your Dart file:
+```sh
+dart pub get
 ```
+
+---
+
+## 🚀 Quick Start
+
+```dart
 import 'package:flutter_validators/flutter_validators.dart';
 ```
 
-Now, you can call the respective validator method.
+### Use as String Extensions
 
-```
-  var email = 'foo@bar.com';
-
-  print(isEmail(email)); // true
-```
-
-To have more streamlined code use built-in String extension methods
-
-```
-print('foo@bar.com'.isEmail);
+```dart
+'foo@bar.com'.isEmail;        // true
+'https://google.com'.isURL;   // true
+'4111111111111111'.isCreditCard; // true
+'abc123'.isAlphanumeric;      // true
 ```
 
-## Validators
+### Use as Top-Level Functions
 
-Here is a list of the validators currently available.
-
-| Validator     | Description |
-| -----------   | ----------- |
-| isAscii      | Check if a string contaibs ASCII chars only.       |
-| isBase32      | Check if a string is base32 encoded.       |
-| isBase58      | Check if a string is base58 encoded.        |
-| isBoolean     | Check if String is a boolean.        |
-| isEmail        | Check if string is a valid email.        |
-| equals        | Check if both Strings are equal.        |
-| isInt        | Check if string is a valid integer.        |
-| isJson        | Check if string is a valid JSON.        |
-| isPhone        | Check if string is a valid phone number.        |
-
-## License (MIT)
-
+```dart
+isEmail('foo@bar.com');       // true
+isURL('https://google.com'); // true
+isIP('192.168.1.1');         // true
 ```
-MIT License
 
-Copyright (c) 2021 Divyanshu Bhargava
+---
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+## 📝 Flutter Form Integration
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+The `Validator` class returns `String? Function(String?)` closures — exactly what `TextFormField.validator` expects. Each method accepts a custom `errorMessage`.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
+```dart
+Form(
+  child: Column(
+    children: [
+      TextFormField(
+        decoration: const InputDecoration(labelText: 'Email'),
+        validator: Validator.email(errorMessage: 'Enter a valid email'),
+      ),
+      TextFormField(
+        decoration: const InputDecoration(labelText: 'Website'),
+        validator: Validator.url(),
+      ),
+      TextFormField(
+        decoration: const InputDecoration(labelText: 'Age'),
+        validator: Validator.numeric(errorMessage: 'Must be a number'),
+      ),
+    ],
+  ),
+)
 ```
+
+> **Tip:** Use `Validator.required()` alongside other validators to enforce non-empty fields.
+
+See the [`example/`](example/) directory for a complete working app.
+
+---
+
+## 📋 All Validators
+
+Every validator is available **both** as a top-level function and as a `String` extension.
+
+| Validator | Extension | Description |
+|---|---|---|
+| `isEmail(str)` | `str.isEmail` | Valid email address |
+| `isURL(str)` | `str.isURL` | Valid HTTP/HTTPS URL |
+| `isIP(str, [version])` | `str.isIP` / `str.isIPv4` / `str.isIPv6` | Valid IP address (v4 or v6) |
+| `isUUID(str)` | `str.isUUID` | Valid UUID |
+| `isCreditCard(str)` | `str.isCreditCard` | Credit card number (Luhn algorithm) |
+| `isDate(str)` | `str.isDate` | Parseable date string |
+| `isJson(str)` | `str.isJson` | Valid JSON |
+| `isInt(str)` | `str.isInt` | Valid integer |
+| `isNumeric(str)` | `str.isNumeric` | Valid number (int or float) |
+| `isAlpha(str)` | `str.isAlpha` | Letters only (a–z, A–Z) |
+| `isAlphanumeric(str)` | `str.isAlphanumeric` | Letters and numbers only |
+| `isAscii(str)` | `str.isAscii` | ASCII characters only |
+| `isBase32(str)` | `str.isBase32` | Base32 encoded |
+| `isBase58(str)` | `str.isBase58` | Base58 encoded |
+| `isBoolean(str)` | `str.isBoolean` | Boolean string (`true`/`false`/`1`/`0`) |
+| `isHexColor(str)` | `str.isHexColor` | Hex color code (`#fff`, `ff0000`) |
+| `isPhone(str)` | `str.isPhone` | Valid phone number |
+| `isLength(str, min, [max])` | `str.isLength(min, [max])` | Length within range |
+| `equals(str, comparison)` | `str.equals(comparison)` | Exact string match |
+
+---
+
+## 🏗️ Form Validator API Reference
+
+All methods on the `Validator` class return `String? Function(String?)`:
+
+```dart
+Validator.required({String errorMessage})
+Validator.email({String errorMessage})
+Validator.url({String errorMessage})
+Validator.ip({int? version, String errorMessage})
+Validator.date({String errorMessage})
+Validator.numeric({String errorMessage})
+Validator.integer({String errorMessage})
+Validator.alpha({String errorMessage})
+Validator.alphanumeric({String errorMessage})
+Validator.phone({String errorMessage})
+Validator.creditCard({String errorMessage})
+Validator.json({String errorMessage})
+Validator.uuid({String errorMessage})
+Validator.hexColor({String errorMessage})
+Validator.ascii({String errorMessage})
+Validator.base32({String errorMessage})
+Validator.base58({String errorMessage})
+Validator.boolean({String errorMessage})
+Validator.equals(String comparison, {String errorMessage})
+Validator.length(int min, {int? max, String errorMessage})
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+Feel free to check the [issues page](https://github.com/divyanshub024/flutter_validators/issues).
+
+---
+
+## 📄 License
+
+This project is [MIT](LICENSE) licensed.
