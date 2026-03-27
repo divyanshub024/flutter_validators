@@ -14,7 +14,7 @@ Add this to your package's `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_validators: ^1.0.3
+  flutter_validators: ^1.1.0
 ```
 
 ## Usage
