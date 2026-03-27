@@ -1,89 +1,98 @@
 # Flutter Validators
+
 <p align="left">
   <a href="https://img.shields.io/badge/License-MIT-green"><img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License"></a>
   <a href="https://github.com/divyanshub024/flutter_validators/stargazers"><img src="https://img.shields.io/github/stars/divyanshub024/flutter_validators?style=flat&logo=github&colorB=green&label=stars" alt="stars"></a>
   <a href="https://pub.dev/packages/flutter_validators"><img src="https://img.shields.io/pub/v/flutter_validators.svg" alt="Pub"></a>
 </p>
 
-A dart package of [String](https://api.dart.dev/stable/2.14.0/dart-core/String-class.html) validators and sanitizers.
-Inspired by [validator.js](https://github.com/validatorjs/validator.js)
+The most comprehensive Dart and Flutter string validation package. Inspired by [validator.js](https://github.com/validatorjs/validator.js).
 
 ## Installation
 
-Run this command:
-With Dart:
+Add this to your package's `pubspec.yaml`:
 
-```
-dart pub add flutter_validators
-```
-
-This will add a line like this to your package's pubspec.yaml (and run an implicit `dart pub get`):
-
-```
+```yaml
 dependencies:
-  flutter_validators: ^1.0.0
+  flutter_validators: ^1.0.3
 ```
 
 ## Usage
 
 Import the package in your Dart file:
-```
+```dart
 import 'package:flutter_validators/flutter_validators.dart';
 ```
 
-Now, you can call the respective validator method.
+There are two primary ways to use this package:
 
-```
-  var email = 'foo@bar.com';
+### 1. Flutter Form Validation
+The package provides a `Validator` class perfectly suited for use inside Flutter `TextFormField`s. It automatically handles error messages and null safety.
 
-  print(isEmail(email)); // true
-```
-
-To have more streamlined code use built-in String extension methods
-
-```
-print('foo@bar.com'.isEmail);
+```dart
+TextFormField(
+  decoration: const InputDecoration(labelText: 'Email'),
+  validator: Validator.email(errorMessage: 'Please enter a valid email'),
+)
 ```
 
-## Validators
+See the `example/` directory for a full working Flutter Form example.
 
-Here is a list of the validators currently available.
+### 2. Standard Dart Extension Methods
+You can call validation methods directly on any Dart string using the built-in extension methods!
+
+```dart
+print('foo@bar.com'.isEmail); // true
+print('https://google.com'.isURL); // true
+print('123e4567-e89b-12d3-a456-426614174000'.isUUID); // true
+```
+
+## Available Validators
+
+Here is a list of the validators currently available. Every validator is available both as a function (`isEmail(str)`) and as a string extension (`str.isEmail`).
 
 | Validator     | Description |
 | -----------   | ----------- |
-| isAscii      | Check if a string contaibs ASCII chars only.       |
-| isBase32      | Check if a string is base32 encoded.       |
-| isBase58      | Check if a string is base58 encoded.        |
-| isBoolean     | Check if String is a boolean.        |
-| isEmail        | Check if string is a valid email.        |
-| equals        | Check if both Strings are equal.        |
-| isInt        | Check if string is a valid integer.        |
-| isJson        | Check if string is a valid JSON.        |
-| isPhone        | Check if string is a valid phone number.        |
+| `isAlpha`, `isAlphanumeric` | Check if a string contains only letters, or letters and numbers. |
+| `isAscii` | Check if a string contains ASCII chars only. |
+| `isBase32`, `isBase58` | Check if a string is base32/base58 encoded. |
+| `isBoolean` | Check if string is a boolean (`true`, `false`, `1`, `0`). |
+| `isCreditCard` | Check if string is a valid credit card using the Luhn Algorithm. |
+| `isDate` | Check if string is a valid date formatting. |
+| `isEmail` | Check if string is a valid email. |
+| `equals` | Check if both Strings are exactly equal. |
+| `isHexColor` | Check if string is a valid hexadecimal color. |
+| `isIP`, `isIPv4`, `isIPv6`| Check if string is a valid IP address. |
+| `isInt`, `isNumeric` | Check if string is a valid integer or number. |
+| `isJson` | Check if string is valid JSON. |
+| `isLength` | Check if string falls in a specific min/max length range. |
+| `isPhone` | Check if string is a valid phone number. |
+| `isURL` | Check if string is a valid URL. |
+| `isUUID` | Check if string is a valid UUID. |
 
-## License (MIT)
+### Flutter Form `Validator` methods
 
-```
+The `Validator` class exposes builders corresponding to each validation type:
+- `Validator.required({String errorMessage})`
+- `Validator.email({String errorMessage})`
+- `Validator.url({String errorMessage})`
+- `Validator.ip({int? version, String errorMessage})`
+- `Validator.date({String errorMessage})`
+- `Validator.numeric({String errorMessage})`
+- `Validator.integer({String errorMessage})`
+- `Validator.alpha({String errorMessage})`
+- `Validator.alphanumeric({String errorMessage})`
+- `Validator.phone({String errorMessage})`
+- `Validator.creditCard({String errorMessage})`
+- `Validator.json({String errorMessage})`
+- `Validator.uuid({String errorMessage})`
+- `Validator.hexColor({String errorMessage})`
+- `Validator.ascii({String errorMessage})`
+- `Validator.base32({String errorMessage})`
+- `Validator.base58({String errorMessage})`
+- `Validator.boolean({String errorMessage})`
+- `Validator.equals(String comparison, {String errorMessage})`
+- `Validator.length(int min, {int? max, String errorMessage})`
+
+## License
 MIT License
-
-Copyright (c) 2021 Divyanshu Bhargava
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-```
