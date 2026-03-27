@@ -21,5 +21,6 @@ extension NumericX on String {
 }
 
 bool _isNumeric(String str) {
-  return double.tryParse(str) != null;
+  var v = double.tryParse(str);
+  return v != null && v.isFinite;
 }

@@ -29,9 +29,10 @@ extension IpX on String {
 }
 
 bool _isIP(String str, [int? version]) {
+  if (version == null) return _isIPv4(str) || _isIPv6(str);
   if (version == 4) return _isIPv4(str);
   if (version == 6) return _isIPv6(str);
-  return _isIPv4(str) || _isIPv6(str);
+  return false;
 }
 
 bool _isIPv4(String str) {

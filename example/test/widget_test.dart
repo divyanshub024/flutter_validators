@@ -11,20 +11,49 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:example/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Form validation smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Locate the TextFormField widgets
+    final emailField = find.byType(TextFormField).at(0);
+    final urlField = find.byType(TextFormField).at(1);
+    final creditCardField = find.byType(TextFormField).at(2);
+    final numericField = find.byType(TextFormField).at(3);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Enter invalid values
+    await tester.enterText(emailField, 'invalid-email');
+    await tester.enterText(urlField, 'invalid-url');
+    await tester.enterText(creditCardField, '1234');
+    await tester.enterText(numericField, 'abc');
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Tap the submit button
+    await tester.tap(find.text('Submit'));
+    await tester.pumpAndSettle();
+
+    // Verify that validation errors appear
+    expect(find.text('Please enter a valid email address'), findsOneWidget);
+    expect(find.text('Please provide a valid URL'), findsOneWidget);
+    expect(find.text('Please enter a valid credit card number'), findsOneWidget);
+    expect(find.text('Please enter a valid number'), findsOneWidget);
+
+    // Enter valid values
+    await tester.enterText(emailField, 'test@example.com');
+    await tester.enterText(urlField, 'https://example.com');
+    await tester.enterText(creditCardField, '4111111111111111');
+    await tester.enterText(numericField, '25');
+
+    // Tap the submit button again
+    await tester.tap(find.text('Submit'));
+    await tester.pumpAndSettle();
+
+    // Verify that validation errors disappear
+    expect(find.text('Please enter a valid email address'), findsNothing);
+    expect(find.text('Please provide a valid URL'), findsNothing);
+    expect(find.text('Please enter a valid credit card number'), findsNothing);
+    expect(find.text('Please enter a valid number'), findsNothing);
+
+    // Verify success state (e.g., success SnackBar appears)
+    expect(find.text('Form is valid!'), findsOneWidget);
   });
 }

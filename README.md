@@ -13,7 +13,7 @@
 <p align="center">
   <a href="https://pub.dev/packages/flutter_validators"><img src="https://img.shields.io/pub/v/flutter_validators.svg?logo=dart&color=blue" alt="Pub Version"></a>
   <a href="https://github.com/divyanshub024/flutter_validators/actions"><img src="https://github.com/divyanshub024/flutter_validators/actions/workflows/test.yml/badge.svg" alt="CI"></a>
-  <a href="https://img.shields.io/badge/License-MIT-green"><img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License"></a>
   <a href="https://github.com/divyanshub024/flutter_validators/stargazers"><img src="https://img.shields.io/github/stars/divyanshub024/flutter_validators?style=flat&logo=github&colorB=green&label=stars" alt="Stars"></a>
 </p>
 

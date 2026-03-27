@@ -11,109 +11,158 @@ import 'package:flutter_validators/flutter_validators.dart';
 /// ```
 class Validator {
   /// Ensures the field is not null or empty.
-  static String? Function(String?) required({String errorMessage = 'Field is required'}) {
-    return (String? value) => value == null || value.trim().isEmpty ? errorMessage : null;
+  static String? Function(String?) required({
+    String errorMessage = 'This field is required',
+  }) {
+    return (String? value) =>
+        value == null || value.trim().isEmpty ? errorMessage : null;
   }
 
   /// Ensures the string is a valid email.
-  static String? Function(String?) email({String errorMessage = 'Invalid email'}) {
+  static String? Function(String?) email({
+    String errorMessage = 'Please enter a valid email address',
+  }) {
     return _build(errorMessage, (v) => v.isEmail);
   }
 
   /// Ensures the string is a valid URL.
-  static String? Function(String?) url({String errorMessage = 'Invalid URL'}) {
+  static String? Function(String?) url({
+    String errorMessage = 'Please enter a valid URL',
+  }) {
     return _build(errorMessage, (v) => v.isURL);
   }
 
   /// Ensures the string is a valid IP address.
-  static String? Function(String?) ip({int? version, String errorMessage = 'Invalid IP address'}) {
+  static String? Function(String?) ip({
+    int? version,
+    String errorMessage = 'Please enter a valid IP address',
+  }) {
     return _build(errorMessage, (v) => isIP(v, version));
   }
 
   /// Ensures the string is a valid date.
-  static String? Function(String?) date({String errorMessage = 'Invalid date'}) {
+  static String? Function(String?) date({
+    String errorMessage = 'Please enter a valid date',
+  }) {
     return _build(errorMessage, (v) => v.isDate);
   }
 
   /// Ensures the string is a valid number.
-  static String? Function(String?) numeric({String errorMessage = 'Invalid number'}) {
+  static String? Function(String?) numeric({
+    String errorMessage = 'Please enter a valid number',
+  }) {
     return _build(errorMessage, (v) => v.isNumeric);
   }
 
   /// Ensures the string is a valid integer.
-  static String? Function(String?) integer({String errorMessage = 'Invalid integer'}) {
+  static String? Function(String?) integer({
+    String errorMessage = 'Please enter a valid whole number',
+  }) {
     return _build(errorMessage, (v) => v.isInt);
   }
 
   /// Ensures the string consists only of letters.
-  static String? Function(String?) alpha({String errorMessage = 'Contains non-alphabet characters'}) {
+  static String? Function(String?) alpha({
+    String errorMessage = 'Only letters are allowed',
+  }) {
     return _build(errorMessage, (v) => v.isAlpha);
   }
 
   /// Ensures the string consists only of letters and numbers.
-  static String? Function(String?) alphanumeric({String errorMessage = 'Contains special characters'}) {
+  static String? Function(String?) alphanumeric({
+    String errorMessage = 'Only letters and numbers are allowed',
+  }) {
     return _build(errorMessage, (v) => v.isAlphanumeric);
   }
 
   /// Ensures the string is a valid phone number.
-  static String? Function(String?) phone({String errorMessage = 'Invalid phone number'}) {
+  static String? Function(String?) phone({
+    String errorMessage = 'Please enter a valid phone number',
+  }) {
     return _build(errorMessage, (v) => v.isPhone);
   }
 
   /// Ensures the string is a valid credit card.
-  static String? Function(String?) creditCard({String errorMessage = 'Invalid credit card'}) {
+  static String? Function(String?) creditCard({
+    String errorMessage = 'Please enter a valid credit card number',
+  }) {
     return _build(errorMessage, (v) => v.isCreditCard);
   }
 
   /// Ensures the string is valid JSON.
-  static String? Function(String?) json({String errorMessage = 'Invalid JSON'}) {
+  static String? Function(String?) json({
+    String errorMessage = 'Please enter valid JSON',
+  }) {
     return _build(errorMessage, (v) => v.isJson);
   }
 
   /// Ensures the string is a valid UUID.
-  static String? Function(String?) uuid({String errorMessage = 'Invalid UUID'}) {
+  static String? Function(String?) uuid({
+    String errorMessage = 'Please enter a valid UUID',
+  }) {
     return _build(errorMessage, (v) => v.isUUID);
   }
 
   /// Ensures the string is a valid hex color.
-  static String? Function(String?) hexColor({String errorMessage = 'Invalid hex color code'}) {
+  static String? Function(String?) hexColor({
+    String errorMessage = 'Please enter a valid hex color (e.g. #ff0000)',
+  }) {
     return _build(errorMessage, (v) => v.isHexColor);
   }
 
   /// Ensures the string only contains ASCII characters.
-  static String? Function(String?) ascii({String errorMessage = 'Contains non-ASCII characters'}) {
+  static String? Function(String?) ascii({
+    String errorMessage = 'Only ASCII characters are allowed',
+  }) {
     return _build(errorMessage, (v) => v.isAscii);
   }
 
   /// Ensures the string is a valid Base32 encoded string.
-  static String? Function(String?) base32({String errorMessage = 'Invalid Base32'}) {
+  static String? Function(String?) base32({
+    String errorMessage = 'Please enter a valid Base32 encoded string',
+  }) {
     return _build(errorMessage, (v) => v.isBase32);
   }
 
   /// Ensures the string is a valid Base58 encoded string.
-  static String? Function(String?) base58({String errorMessage = 'Invalid Base58'}) {
+  static String? Function(String?) base58({
+    String errorMessage = 'Please enter a valid Base58 encoded string',
+  }) {
     return _build(errorMessage, (v) => v.isBase58);
   }
 
   /// Ensures the string represents a boolean value.
-  static String? Function(String?) boolean({String errorMessage = 'Invalid boolean field'}) {
+  static String? Function(String?) boolean({
+    String errorMessage = 'Please enter true or false',
+  }) {
     return _build(errorMessage, (v) => v.isBoolean);
   }
 
   /// Ensures the string matches the comparison string exactly.
-  static String? Function(String?) equals(String comparison, {String errorMessage = 'Fields do not match'}) {
+  static String? Function(String?) equals(
+    String comparison, {
+    String errorMessage = 'Values do not match',
+  }) {
     return _build(errorMessage, (v) => v.equals(comparison));
   }
 
   /// Ensures the string length falls within the specified range.
-  static String? Function(String?) length(int min, {int? max, String errorMessage = 'Invalid length'}) {
+  static String? Function(String?) length(
+    int min, {
+    int? max,
+    String errorMessage = 'Length is out of range',
+  }) {
     return _build(errorMessage, (v) => v.isLength(min, max));
   }
 
   /// Internal helper to construct the validator closure
-  static String? Function(String?) _build(String errorMessage, bool Function(String) test) {
+  static String? Function(String?) _build(
+    String errorMessage,
+    bool Function(String) test,
+  ) {
     return (String? value) {
-      if (value == null || value.isEmpty) return null; // Let 'required' handle empty states
+      if (value == null || value.isEmpty)
+        return null; // Let 'required' handle empty states
       return test(value) ? null : errorMessage;
     };
   }
