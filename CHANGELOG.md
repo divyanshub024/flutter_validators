@@ -15,7 +15,7 @@
 * update README.md
 
 ## 1.0.0
-
+y
 * Added `isPhone` validator
 * Added `isJson` validator
 
