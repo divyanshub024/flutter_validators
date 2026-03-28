@@ -161,8 +161,9 @@ class Validator {
     bool Function(String) test,
   ) {
     return (String? value) {
-      if (value == null || value.isEmpty)
+      if (value == null || value.isEmpty) {
         return null; // Let 'required' handle empty states
+      }
       return test(value) ? null : errorMessage;
     };
   }
