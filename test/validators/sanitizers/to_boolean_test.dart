@@ -16,5 +16,12 @@ void main() {
       expect('true'.toBoolean(strict: true), isTrue);
       expect('yes'.toBoolean(strict: true), isFalse);
     });
+
+    test('keyword matching is case-insensitive', () {
+      expect(toBoolean('FALSE'), isFalse);
+      expect(toBoolean('False'), isFalse);
+      expect('TRUE'.toBoolean(strict: true), isTrue);
+      expect('True'.toBoolean(strict: true), isTrue);
+    });
   });
 }

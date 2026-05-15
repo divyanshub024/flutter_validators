@@ -235,12 +235,19 @@ void main() {
       final base64 = Validator.base64(errorMessage: 'Bad base64');
       expect(base64('aGVsbG8='), isNull);
       expect(base64('@@@@'), equals('Bad base64'));
-      final urlSafe = Validator.base64(urlSafe: true, errorMessage: 'Bad url64');
-      expect(urlSafe('a-b_c'), isNull);
+      final urlSafe = Validator.base64(
+        urlSafe: true,
+        errorMessage: 'Bad url64',
+      );
+      expect(urlSafe('a-b_cdef'), isNull);
     });
 
     test('ByteLength validator', () {
-      final byteLength = Validator.byteLength(2, max: 5, errorMessage: 'Bad len');
+      final byteLength = Validator.byteLength(
+        2,
+        max: 5,
+        errorMessage: 'Bad len',
+      );
       expect(byteLength('abc'), isNull);
       expect(byteLength('a'), equals('Bad len'));
       expect(byteLength('abcdef'), equals('Bad len'));
@@ -260,7 +267,10 @@ void main() {
     });
 
     test('Contains validator', () {
-      final containsWorld = Validator.contains('world', errorMessage: 'Missing');
+      final containsWorld = Validator.contains(
+        'world',
+        errorMessage: 'Missing',
+      );
       expect(containsWorld('hello world'), isNull);
       expect(containsWorld('hello there'), equals('Missing'));
       final caseInsensitive = Validator.contains(
@@ -281,10 +291,11 @@ void main() {
     });
 
     test('InList validator', () {
-      final inList = Validator.inList(
-        ['red', 'green', 'blue'],
-        errorMessage: 'Not allowed',
-      );
+      final inList = Validator.inList([
+        'red',
+        'green',
+        'blue',
+      ], errorMessage: 'Not allowed');
       expect(inList('red'), isNull);
       expect(inList('yellow'), equals('Not allowed'));
     });

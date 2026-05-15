@@ -2,7 +2,7 @@
 ///
 /// In loose mode (the default) every value is `true` except `''`, `'0'`
 /// and `'false'`. In [strict] mode only `'1'` and `'true'` are `true` and
-/// everything else is `false`.
+/// everything else is `false`. Keyword matching is case-insensitive.
 ///
 /// Example:
 /// ```dart
@@ -19,8 +19,9 @@ extension ToBooleanX on String {
 }
 
 bool _toBoolean(String str, bool strict) {
+  final normalized = str.toLowerCase();
   if (strict) {
-    return str == '1' || str == 'true';
+    return normalized == '1' || normalized == 'true';
   }
-  return str != '0' && str != 'false' && str != '';
+  return normalized != '0' && normalized != 'false' && normalized != '';
 }

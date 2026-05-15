@@ -11,13 +11,15 @@ void main() {
 
     test('Valid URL-safe Base64 strings', () {
       expect('aGVsbG8'.isBase64(urlSafe: true), isTrue);
-      expect(isBase64('a-b_c', urlSafe: true), isTrue);
+      expect(isBase64('a-b_cdef', urlSafe: true), isTrue);
     });
 
     test('Invalid Base64 strings', () {
       expect('aGVsbG8'.isBase64(), isFalse); // bad padding
       expect('@@@@'.isBase64(), isFalse);
       expect(''.isBase64(), isFalse);
+      expect('a'.isBase64(urlSafe: true), isFalse); // impossible length
+      expect('abcde'.isBase64(urlSafe: true), isFalse); // length % 4 == 1
     });
   });
 }

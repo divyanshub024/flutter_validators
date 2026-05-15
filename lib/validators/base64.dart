@@ -27,6 +27,8 @@ final _base64UrlSafe = RegExp(r'^[A-Za-z0-9_-]+$');
 bool _isBase64(String str, bool urlSafe) {
   if (str.isEmpty) return false;
   if (urlSafe) {
+    // A base64 string can never have a length of `4n + 1`.
+    if (str.length % 4 == 1) return false;
     return _base64UrlSafe.hasMatch(str);
   }
   if (str.length % 4 != 0) return false;
