@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/divyanshub024/flutter_validators/main/assets/banner.png" alt="Flutter Validators Banner" />
+  <img src="https://raw.githubusercontent.com/StacDev/flutter_validators/main/assets/banner.png" alt="Flutter Validators Banner" />
 </p>
 
 <p align="center">
@@ -12,9 +12,9 @@
 
 <p align="center">
   <a href="https://pub.dev/packages/flutter_validators"><img src="https://img.shields.io/pub/v/flutter_validators.svg?logo=dart&color=blue" alt="Pub Version"></a>
-  <a href="https://github.com/divyanshub024/flutter_validators/actions"><img src="https://github.com/divyanshub024/flutter_validators/actions/workflows/test.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/StacDev/flutter_validators/actions"><img src="https://github.com/StacDev/flutter_validators/actions/workflows/test.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License"></a>
-  <a href="https://github.com/divyanshub024/flutter_validators/stargazers"><img src="https://img.shields.io/github/stars/divyanshub024/flutter_validators?style=flat&logo=github&colorB=green&label=stars" alt="Stars"></a>
+  <a href="https://github.com/StacDev/flutter_validators/stargazers"><img src="https://img.shields.io/github/stars/StacDev/flutter_validators?style=flat&logo=github&colorB=green&label=stars" alt="Stars"></a>
 </p>
 
 <p align="center">
@@ -508,13 +508,8 @@ validator: (value) {
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome! Check the [issues page](https://github.com/divyanshub024/flutter_validators/issues) to get started.
-
-Before opening a pull request, please run the test suite:
-
-```sh
-dart test
-```
+Contributions, issues, and feature requests are welcome!
+Feel free to check the [issues page](https://github.com/StacDev/flutter_validators/issues).
 
 ---
 
