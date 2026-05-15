@@ -18,12 +18,12 @@
 </p>
 
 <p align="center">
-  Inspired by <a href="https://github.com/validatorjs/validator.js">validator.js</a> · 20+ validators · Works with Flutter Forms out of the box
+  Inspired by <a href="https://github.com/validatorjs/validator.js">validator.js</a> · 40+ validators & sanitizers · Works with Flutter Forms out of the box
 </p>
 
 ---
 
-A pure Dart package with 20+ string validators and sanitizers, from emails and URLs to credit cards and UUIDs. Use them as simple functions, convenient `String` extensions, or plug them directly into Flutter's `TextFormField` with the built-in `Validator` class. Zero dependencies, fully tested.
+A pure Dart package with 40+ string validators and sanitizers, from emails and URLs to credit cards, UUIDs and strong-password checks. Use them as simple functions, convenient `String` extensions, or plug them directly into Flutter's `TextFormField` with the built-in `Validator` class. Zero dependencies, fully tested.
 
 ---
 
@@ -31,7 +31,7 @@ A pure Dart package with 20+ string validators and sanitizers, from emails and U
 
 ```yaml
 dependencies:
-  flutter_validators: ^1.1.0
+  flutter_validators: ^1.2.0
 ```
 
 Then run:
@@ -120,9 +120,60 @@ Every validator is available **both** as a top-level function and as a `String` 
 | `isBase58(str)` | `str.isBase58` | Base58 encoded |
 | `isBoolean(str)` | `str.isBoolean` | Boolean string (`true`/`false`/`1`/`0`) |
 | `isHexColor(str)` | `str.isHexColor` | Hex color code (`#fff`, `ff0000`) |
+| `isHexadecimal(str)` | `str.isHexadecimal` | Hexadecimal number |
+| `isOctal(str)` | `str.isOctal` | Octal number |
+| `isDecimal(str)` | `str.isDecimal` | Decimal number |
+| `isFloat(str, {min, max})` | `str.isFloat({min, max})` | Finite float, optionally within range |
 | `isPhone(str)` | `str.isPhone` | Valid phone number |
 | `isLength(str, min, [max])` | `str.isLength(min, [max])` | Length within range |
+| `isByteLength(str, min, [max])` | `str.isByteLength(min, [max])` | UTF-8 byte length within range |
+| `isBase64(str, {urlSafe})` | `str.isBase64({urlSafe})` | Base64 encoded |
+| `isLowercase(str)` | `str.isLowercase` | Entirely lowercase |
+| `isUppercase(str)` | `str.isUppercase` | Entirely uppercase |
+| `isSlug(str)` | `str.isSlug` | URL slug |
+| `isFQDN(str)` | `str.isFQDN` | Fully qualified domain name |
+| `isMACAddress(str)` | `str.isMACAddress` | MAC address |
+| `isLatLong(str)` | `str.isLatLong` | `latitude,longitude` pair |
+| `isPort(str)` | `str.isPort` | Port number (0–65535) |
+| `isSemVer(str)` | `str.isSemVer` | Semantic version |
+| `isMongoId(str)` | `str.isMongoId` | MongoDB ObjectId |
+| `isMD5(str)` | `str.isMD5` | MD5 hash |
+| `isJWT(str)` | `str.isJWT` | JSON Web Token |
+| `isStrongPassword(str, {...})` | `str.isStrongPassword({...})` | Password meets strength rules |
+| `isIn(str, values)` | `str.isIn(values)` | One of the allowed values |
+| `matches(str, pattern)` | `str.matches(pattern)` | Matches a `Pattern`/`RegExp` |
+| `contains(str, seed, {ignoreCase, minOccurrences})` | — | Contains a substring |
 | `equals(str, comparison)` | `str.equals(comparison)` | Exact string match |
+
+---
+
+## 🧹 Sanitizers
+
+Sanitizers transform or coerce strings. Available both as top-level functions and `String` extensions.
+
+```dart
+trim('  hello  ');             // 'hello'
+escape('<script>');            // '&lt;script&gt;'
+normalizeEmail('A.B+x@GMAIL.com'); // 'ab@gmail.com'
+toBoolean('true');             // true
+toInt('42');                   // 42
+```
+
+| Sanitizer | Returns | Description |
+|---|---|---|
+| `trim(str, [chars])` | `String` | Trim whitespace/chars from both ends |
+| `ltrim(str, [chars])` | `String` | Trim from the start |
+| `rtrim(str, [chars])` | `String` | Trim from the end |
+| `escape(str)` | `String` | Escape HTML-unsafe characters |
+| `unescape(str)` | `String` | Reverse of `escape` |
+| `blacklist(str, chars)` | `String` | Remove the listed characters |
+| `whitelist(str, chars)` | `String` | Keep only the listed characters |
+| `stripLow(str, {keepNewLines})` | `String` | Remove control characters |
+| `normalizeEmail(str)` | `String?` | Canonicalize an email address |
+| `toBoolean(str, {strict})` | `bool` | Convert to a boolean |
+| `toInt(str, {radix})` | `int?` | Parse to an integer |
+| `toFloat(str)` | `double?` | Parse to a double |
+| `toDate(str)` | `DateTime?` | Parse to a `DateTime` |
 
 ---
 
@@ -149,6 +200,27 @@ Validator.ascii({String errorMessage})
 Validator.base32({String errorMessage})
 Validator.base58({String errorMessage})
 Validator.boolean({String errorMessage})
+Validator.base64({bool urlSafe, String errorMessage})
+Validator.hexadecimal({String errorMessage})
+Validator.octal({String errorMessage})
+Validator.decimal({String errorMessage})
+Validator.float({double? min, double? max, String errorMessage})
+Validator.lowercase({String errorMessage})
+Validator.uppercase({String errorMessage})
+Validator.slug({String errorMessage})
+Validator.fqdn({String errorMessage})
+Validator.macAddress({String errorMessage})
+Validator.latLong({String errorMessage})
+Validator.port({String errorMessage})
+Validator.semVer({String errorMessage})
+Validator.mongoId({String errorMessage})
+Validator.md5({String errorMessage})
+Validator.jwt({String errorMessage})
+Validator.strongPassword({int minLength, int minLowercase, int minUppercase, int minNumbers, int minSymbols, String errorMessage})
+Validator.contains(String seed, {bool ignoreCase, int minOccurrences, String errorMessage})
+Validator.matches(Pattern pattern, {String errorMessage})
+Validator.inList(Iterable<String> allowed, {String errorMessage})
+Validator.byteLength(int min, {int? max, String errorMessage})
 Validator.equals(String comparison, {String errorMessage})
 Validator.length(int min, {int? max, String errorMessage})
 ```

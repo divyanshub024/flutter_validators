@@ -1,4 +1,5 @@
 import 'package:flutter_validators/flutter_validators.dart';
+import 'package:flutter_validators/validators/contains.dart' as contains_fn;
 
 /// A utility class for Flutter Form validation.
 /// Provides methods that return a validator function suitable for `TextFormField`.
@@ -153,6 +154,185 @@ class Validator {
     String errorMessage = 'Length is out of range',
   }) {
     return _build(errorMessage, (v) => v.isLength(min, max));
+  }
+
+  /// Ensures the string is entirely lowercase.
+  static String? Function(String?) lowercase({
+    String errorMessage = 'Must be lowercase',
+  }) {
+    return _build(errorMessage, (v) => v.isLowercase);
+  }
+
+  /// Ensures the string is entirely uppercase.
+  static String? Function(String?) uppercase({
+    String errorMessage = 'Must be uppercase',
+  }) {
+    return _build(errorMessage, (v) => v.isUppercase);
+  }
+
+  /// Ensures the string is a hexadecimal number.
+  static String? Function(String?) hexadecimal({
+    String errorMessage = 'Please enter a valid hexadecimal number',
+  }) {
+    return _build(errorMessage, (v) => v.isHexadecimal);
+  }
+
+  /// Ensures the string is an octal number.
+  static String? Function(String?) octal({
+    String errorMessage = 'Please enter a valid octal number',
+  }) {
+    return _build(errorMessage, (v) => v.isOctal);
+  }
+
+  /// Ensures the string is a valid MongoDB ObjectId.
+  static String? Function(String?) mongoId({
+    String errorMessage = 'Please enter a valid MongoDB ObjectId',
+  }) {
+    return _build(errorMessage, (v) => v.isMongoId);
+  }
+
+  /// Ensures the string is a valid MD5 hash.
+  static String? Function(String?) md5({
+    String errorMessage = 'Please enter a valid MD5 hash',
+  }) {
+    return _build(errorMessage, (v) => v.isMD5);
+  }
+
+  /// Ensures the string is a valid port number.
+  static String? Function(String?) port({
+    String errorMessage = 'Please enter a valid port number',
+  }) {
+    return _build(errorMessage, (v) => v.isPort);
+  }
+
+  /// Ensures the string is a valid Semantic Version.
+  static String? Function(String?) semVer({
+    String errorMessage = 'Please enter a valid semantic version',
+  }) {
+    return _build(errorMessage, (v) => v.isSemVer);
+  }
+
+  /// Ensures the string is a valid URL slug.
+  static String? Function(String?) slug({
+    String errorMessage = 'Please enter a valid slug',
+  }) {
+    return _build(errorMessage, (v) => v.isSlug);
+  }
+
+  /// Ensures the string is a valid MAC address.
+  static String? Function(String?) macAddress({
+    String errorMessage = 'Please enter a valid MAC address',
+  }) {
+    return _build(errorMessage, (v) => v.isMACAddress);
+  }
+
+  /// Ensures the string is a valid `latitude,longitude` pair.
+  static String? Function(String?) latLong({
+    String errorMessage = 'Please enter valid coordinates',
+  }) {
+    return _build(errorMessage, (v) => v.isLatLong);
+  }
+
+  /// Ensures the string is a valid JSON Web Token.
+  static String? Function(String?) jwt({
+    String errorMessage = 'Please enter a valid JWT',
+  }) {
+    return _build(errorMessage, (v) => v.isJWT);
+  }
+
+  /// Ensures the string is a fully qualified domain name.
+  static String? Function(String?) fqdn({
+    String errorMessage = 'Please enter a valid domain name',
+  }) {
+    return _build(errorMessage, (v) => v.isFQDN);
+  }
+
+  /// Ensures the string is Base64 encoded.
+  static String? Function(String?) base64({
+    bool urlSafe = false,
+    String errorMessage = 'Please enter a valid Base64 encoded string',
+  }) {
+    return _build(errorMessage, (v) => v.isBase64(urlSafe: urlSafe));
+  }
+
+  /// Ensures the string represents a decimal number.
+  static String? Function(String?) decimal({
+    String errorMessage = 'Please enter a valid decimal number',
+  }) {
+    return _build(errorMessage, (v) => v.isDecimal);
+  }
+
+  /// Ensures the string contains the [seed] substring.
+  static String? Function(String?) contains(
+    String seed, {
+    bool ignoreCase = false,
+    int minOccurrences = 1,
+    String errorMessage = 'Required text is missing',
+  }) {
+    return _build(
+      errorMessage,
+      (v) => contains_fn.contains(
+        v,
+        seed,
+        ignoreCase: ignoreCase,
+        minOccurrences: minOccurrences,
+      ),
+    );
+  }
+
+  /// Ensures the string matches the given [pattern].
+  static String? Function(String?) matches(
+    Pattern pattern, {
+    String errorMessage = 'Invalid format',
+  }) {
+    return _build(errorMessage, (v) => v.matches(pattern));
+  }
+
+  /// Ensures the string is one of the [allowed] values.
+  static String? Function(String?) inList(
+    Iterable<String> allowed, {
+    String errorMessage = 'Value is not allowed',
+  }) {
+    return _build(errorMessage, (v) => isIn(v, allowed));
+  }
+
+  /// Ensures the string is a finite floating-point number.
+  static String? Function(String?) float({
+    double? min,
+    double? max,
+    String errorMessage = 'Please enter a valid number',
+  }) {
+    return _build(errorMessage, (v) => v.isFloat(min: min, max: max));
+  }
+
+  /// Ensures the string's UTF-8 byte length falls within a range.
+  static String? Function(String?) byteLength(
+    int min, {
+    int? max,
+    String errorMessage = 'Length is out of range',
+  }) {
+    return _build(errorMessage, (v) => v.isByteLength(min, max));
+  }
+
+  /// Ensures the string is a strong password.
+  static String? Function(String?) strongPassword({
+    int minLength = 8,
+    int minLowercase = 1,
+    int minUppercase = 1,
+    int minNumbers = 1,
+    int minSymbols = 1,
+    String errorMessage = 'Password is not strong enough',
+  }) {
+    return _build(
+      errorMessage,
+      (v) => v.isStrongPassword(
+        minLength: minLength,
+        minLowercase: minLowercase,
+        minUppercase: minUppercase,
+        minNumbers: minNumbers,
+        minSymbols: minSymbols,
+      ),
+    );
   }
 
   /// Internal helper to construct the validator closure

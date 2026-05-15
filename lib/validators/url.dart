@@ -20,5 +20,7 @@ extension UrlX on String {
 bool _isURL(String str) {
   if (str.isEmpty) return false;
   final uri = Uri.tryParse(str);
-  return uri != null && uri.hasAuthority && (uri.scheme == 'http' || uri.scheme == 'https');
+  return uri != null &&
+      uri.hasAuthority &&
+      (uri.scheme == 'http' || uri.scheme == 'https');
 }
